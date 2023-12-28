@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transaksi Penjualan/Pembelian Barang</title>
+  </head>
+  <body>
+    <h2>Data Barang</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Kode</th>
+          <th>Nama Barang</th>
+          <th>Harga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>001</td>
+          <td>Pensil</td>
+          <td>5000</td>
+        </tr>
+        <tr>
+          <td>002</td>
+          <td>Buku</td>
+          <td>10000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Input Transaksi</h2>
+    <form id="transaksiForm">
+      <label for="kode">Masukkan Kode:</label>
+      <input type="text" id="kode" required />
+
+      <label for="banyakBarang">Banyaknya Barang:</label>
+      <input type="number" id="banyakBarang" required />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      document
+        .getElementById("transaksiForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Mendapatkan nilai dari input
+          var kode = document.getElementById("kode").value;
+          var banyakBarang = parseInt(
+            document.getElementById("banyakBarang").value
+          );
+
+          // Mendapatkan harga berdasarkan kode (contoh harga statis)
+          var harga = 0;
+          switch (kode) {
+            case "001":
+              harga = 5000;
+              break;
+            case "002":
+              harga = 10000;
+              break;
+            // Tambahkan case sesuai dengan kode barang yang ada
+          }
+
+          // Menghitung total
+          var total = harga * banyakBarang;
+
+          // Menampilkan total dengan window.alert
+          window.alert("Total yang harus dibayar: " + total);
+
+          // Meminta input jumlah uang yang dibayarkan
+          var uangDibayarkan = parseFloat(
+            window.prompt("Masukkan jumlah uang yang akan dibayarkan:")
+          );
+
+          // Menghitung kembalian
+          var kembalian = uangDibayarkan - total;
+
+          // Menampilkan kembalian dengan window.alert
+          if (kembalian >= 0) {
+            window.alert("Kembalian: " + kembalian);
+          } else {
+            window.alert("Uang Anda kurang sejumlah: " + Math.abs(kembalian));
+          }
+        });
+    </script>
+  </body>
+</html>
