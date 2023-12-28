@@ -45,14 +45,10 @@
         .getElementById("transaksiForm")
         .addEventListener("submit", function (event) {
           event.preventDefault();
-
-          // Mendapatkan nilai dari input
           var kode = document.getElementById("kode").value;
           var banyakBarang = parseInt(
             document.getElementById("banyakBarang").value
           );
-
-          // Mendapatkan harga berdasarkan kode (contoh harga statis)
           var harga = 0;
           switch (kode) {
             case "001":
@@ -61,24 +57,16 @@
             case "002":
               harga = 10000;
               break;
-            // Tambahkan case sesuai dengan kode barang yang ada
           }
 
-          // Menghitung total
           var total = harga * banyakBarang;
-
-          // Menampilkan total dengan window.alert
           window.alert("Total yang harus dibayar: " + total);
 
-          // Meminta input jumlah uang yang dibayarkan
           var uangDibayarkan = parseFloat(
             window.prompt("Masukkan jumlah uang yang akan dibayarkan:")
           );
-
-          // Menghitung kembalian
           var kembalian = uangDibayarkan - total;
 
-          // Menampilkan kembalian dengan window.alert
           if (kembalian >= 0) {
             window.alert("Kembalian: " + kembalian);
           } else {
